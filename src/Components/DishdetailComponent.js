@@ -38,7 +38,7 @@ class DishDetail extends Component {
                                 return (
                                     <ul class="list-unstyled">
                                     <li>{comment.comment}</li>
-                                    <ul><li>{comment.author}, {comment.date}</li></ul>
+                                    <ul><li>{comment.author}, {comment.date.split('T')[0]}</li></ul>
                                 </ul>   
                                 );
                             }
