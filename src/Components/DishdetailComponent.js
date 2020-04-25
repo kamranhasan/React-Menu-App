@@ -1,21 +1,18 @@
 import React, { Container, Component } from 'react';
-import { Card,CardImg,CardImgOverlay,CardText,CardBody,CardTitle } from 'reactstrap';
+import { Card,CardImg,CardText,CardBody,CardTitle } from 'reactstrap';
 
 class DishDetail extends Component {
     constructor(props){
         super(props);
 
         this.state = {
-            selectedDish: null,
+
         };
-    }
-    onDishSelect(dish){
-        this.setState({ selectedDish : dish });
     }
     renderDish(dish){
         if (dish != null){
             return(
-                <Card>
+                <Card className='col-12 col-md-5 m-1'>
                     <CardImg width="100%" object src={dish.image} alt={dish.name} />
                     <CardBody>
                         <CardTitle>{dish.name}</CardTitle>
@@ -30,28 +27,38 @@ class DishDetail extends Component {
             );
         }
     }
-    render(){
-        const menu = this.props.dishes.map(
-            (dish) => { return (
-                <div key={dish.id} className='col-12 col-md-5 m-1'>
-                    <Card onClick={()=>this.onDishSelect(dish) }>
-                        <CardImg width="100%" object src={dish.image} alt={dish.name} />
-                        <CardImgOverlay>
-                            <CardTitle>{dish.name}</CardTitle>
-                        </CardImgOverlay>
-                    </Card>
+    renderComments(dish){
+        if (dish != null){
+        if (dish.comments != null ){
+            return(
+                <div className='col-12 col-md-5 m-1'>
+                        <h4>Comments</h4>
+                        {dish.comments.map(
+                            (comment)=> {
+                                return (
+                                    <ul class="list-unstyled">
+                                    <li>{comment.comment}</li>
+                                    <ul><li>{comment.author}, {comment.date}</li></ul>
+                                </ul>   
+                                );
+                            }
+                        )}   
                 </div>
             );
-            }
-        );
-
+        }
+        else{
+            return(
+                <div></div>
+            );
+        }
+    }}
+    render(){
+       
         return (
             <div className='container'>
                 <div className='row'>
-                {menu}    
-                </div>
-                <div className='row'>
-                        {this.renderDish(this.state.selectedDish)}
+                    {this.renderDish(this.props.selectedDish)}
+                    {this.renderComments(this.props.selectedDish)}
                 </div>
             </div>
         );
