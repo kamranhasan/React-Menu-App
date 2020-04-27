@@ -1,4 +1,4 @@
-import React, { Container, Component } from 'react';
+import React, { Component } from 'react';
 import { Card,CardImg,CardText,CardBody,CardTitle } from 'reactstrap';
 
 class DishDetail extends Component {
@@ -38,7 +38,7 @@ class DishDetail extends Component {
                                 return (
                                     <ul class="list-unstyled">
                                     <li>{comment.comment}</li>
-                                    <ul><li>{comment.author}, {comment.date.split('T')[0]}</li></ul>
+                                    <ul><li>{comment.author}, {new Intl.DateTimeFormat('en-US',{year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comment.date)))}</li></ul>
                                 </ul>   
                                 );
                             }
