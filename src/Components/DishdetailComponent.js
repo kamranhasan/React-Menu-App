@@ -1,5 +1,5 @@
 import React,{ Component } from 'react';
-import { Row,Col,Card,CardImg,CardText,CardBody,CardTitle,Breadcrumb,BreadcrumbItem,Button,Form,FormGroup,Label,Input,Modal,ModalBody,ModalHeader } from 'reactstrap';
+import { Row,Col,Card,CardImg,CardText,CardBody,CardTitle,Breadcrumb,BreadcrumbItem,Button,Label,Modal,ModalBody,ModalHeader } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { Control, LocalForm, Errors } from 'react-redux-form';
 
@@ -98,16 +98,6 @@ class CommentForm extends Component{
         );
     }
 }
-
-
-
-
-
-
-
-
-
-
 
 function RenderDish({dish}){
     if (dish != null){
